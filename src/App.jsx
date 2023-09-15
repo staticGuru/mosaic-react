@@ -75,6 +75,8 @@ import AvatarPage from './pages/component/AvatarPage';
 import TooltipPage from './pages/component/TooltipPage';
 import AccordionPage from './pages/component/AccordionPage';
 import IconsPage from './pages/component/IconsPage';
+import OrganizationAccount from './pages/auth/organizationaccount';
+import ClinicAccount from './pages/auth/clinicaccount';
 
 function App() {
 
@@ -136,6 +138,8 @@ function App() {
         <Route path="/utility/knowledge-base" element={<KnowledgeBase />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/signup/organization_account" element={<OrganizationAccount />} />
+        <Route path="/signup/clinic_account" element={<ClinicAccount />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/onboarding-01" element={<Onboarding01 />} />
         <Route path="/onboarding-02" element={<Onboarding02 />} />
