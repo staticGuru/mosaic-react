@@ -5,14 +5,22 @@ import Notifications from '../components/DropdownNotifications';
 import Help from '../components/DropdownHelp';
 import UserMenu from '../components/DropdownProfile';
 import ThemeToggle from '../components/ThemeToggle';
+import { CookieController } from '../utils/CookieController';
+import { useNavigate } from 'react-router-dom';
 
 function Header({
   sidebarOpen,
   setSidebarOpen
 }) {
+  const navigate=useNavigate();
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const currentuser=CookieController.get("currentuserdata");
 
-  const [searchModalOpen, setSearchModalOpen] = useState(false)
-
+function handleSignOut(e){
+  e.preventDefault();
+  CookieController.remove("currentuserdata");
+  navigate("/signin");
+}
   return (
     <header className="sticky top-0 bg-white dark:bg-[#182235] border-b border-slate-200 dark:border-slate-700 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -59,7 +67,7 @@ function Header({
             {/*<ThemeToggle />*/}
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 dark:bg-slate-700 border-none" />
-            <UserMenu align="right" />
+            <UserMenu align="right" currentuser={currentuser} handleSignOut={handleSignOut}/>
 
           </div>
 
